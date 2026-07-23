@@ -1,0 +1,67 @@
+{
+  "name": "readme-flightcheck",
+  "version": "0.1.0",
+  "description": "Preflight README install commands, links, screenshots, examples, and first-screen information.",
+  "type": "module",
+  "license": "MIT",
+  "author": "KanadeK",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KanadeK/readme-flightcheck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KanadeK/readme-flightcheck/issues"
+  },
+  "homepage": "https://github.com/KanadeK/readme-flightcheck#readme",
+  "keywords": [
+    "readme",
+    "documentation",
+    "github-action",
+    "devtools",
+    "quality"
+  ],
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "packageManager": "npm@11.16.0",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "verify": "node scripts/verify.mjs"
+  },
+  "dependencies": {
+    "@actions/core": "3.0.1",
+    "archiver": "8.0.0",
+    "commander": "15.0.0",
+    "github-slugger": "2.0.0",
+    "marked": "18.0.7",
+    "mdast-util-to-string": "4.0.0",
+    "picocolors": "1.1.1",
+    "pixelmatch": "7.2.0",
+    "pngjs": "7.0.0",
+    "remark-parse": "11.0.0",
+    "unified": "11.0.5",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.61.1",
+    "@types/archiver": "8.0.0",
+    "@types/node": "26.1.1",
+    "@types/pixelmatch": "5.2.6",
+    "@types/pngjs": "6.0.5",
+    "@vercel/ncc": "0.44.1",
+    "@vitest/coverage-v8": "4.1.10",
+    "eslint": "10.7.0",
+    "globals": "17.7.0",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.65.0",
+    "vitest": "4.1.10"
+  }
+}
