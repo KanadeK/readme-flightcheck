@@ -1,0 +1,46 @@
+name: README Flightcheck
+description: Rehearse README commands and verify links, images, anchors, examples, and first-screen evidence.
+author: KanadeK
+branding:
+  color: blue
+  icon: check-circle
+inputs:
+  path:
+    description: Repository directory to audit.
+    default: .
+  readme:
+    description: README path relative to the repository.
+    default: README.md
+  execute:
+    description: Rehearse allowlisted commands in a disposable copy.
+    default: 'false'
+  allow-command:
+    description: Additional exact shell-free commands, one per line.
+    required: false
+  command-timeout-ms:
+    description: Per-command timeout in milliseconds.
+    default: '30000'
+  check-external:
+    description: Check HTTP(S) links. Each URL is sent to its destination.
+    default: 'false'
+  allow-private-hosts:
+    description: Allow private/loopback links for trusted fixtures.
+    default: 'false'
+  fail-below:
+    description: Minimum accepted score from 0 to 100.
+    default: '80'
+  report-path:
+    description: JSON report output path.
+    default: readme-flightcheck-report.json
+outputs:
+  score:
+    description: Numeric score from 0 to 100.
+  grade:
+    description: Letter grade A through F.
+  passed:
+    description: Whether the audit passed.
+  report-path:
+    description: Absolute JSON report path.
+runs:
+  using: node24
+  main: action-dist/index.js

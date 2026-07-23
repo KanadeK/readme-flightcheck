@@ -2,6 +2,7 @@ import {
   AuditReportSchema,
   FindingSchema,
   type AuditReport,
+  type AuditEvidence,
   type CommandResult,
   type Finding,
 } from './types.js';
@@ -37,8 +38,10 @@ function compareFindings(left: Finding, right: Finding): number {
 
 export interface CreateAuditReportInput {
   commandResults: CommandResult[];
+  evidence?: Partial<AuditEvidence>;
   findings: Finding[];
   generatedAt: Date;
+  minimumScore?: number;
   repository: string;
   source: string;
   toolVersion?: string;
@@ -52,14 +55,23 @@ export function createAuditReport(input: CreateAuditReportInput): AuditReport {
     notices: findings.filter((finding) => finding.severity === 'notice').length,
     warnings: findings.filter((finding) => finding.severity === 'warning').length,
   };
+  const evidence: AuditEvidence = {
+    commandsDiscovered: input.evidence?.commandsDiscovered ?? input.commandResults.length,
+    commandsExecuted: input.evidence?.commandsExecuted ?? input.commandResults.length,
+    externalLinksChecked: input.evidence?.externalLinksChecked ?? 0,
+    localReferencesChecked: input.evidence?.localReferencesChecked ?? 0,
+    snapshotsCompared: input.evidence?.snapshotsCompared ?? 0,
+  };
+  const minimumScore = input.minimumScore ?? 80;
 
   return AuditReportSchema.parse({
     commandResults: input.commandResults,
     ...score,
+    evidence,
     findings,
     generatedAt: input.generatedAt.toISOString(),
     grade: score.grade,
-    passed: summary.errors === 0 && score.score >= 80,
+    passed: summary.errors === 0 && score.score >= minimumScore,
     repository: input.repository,
     schemaVersion: '1',
     source: input.source,

@@ -93,9 +93,19 @@ export const CommandResultSchema = z.object({
 });
 export type CommandResult = z.infer<typeof CommandResultSchema>;
 
+export const AuditEvidenceSchema = z.object({
+  commandsDiscovered: z.number().int().nonnegative(),
+  commandsExecuted: z.number().int().nonnegative(),
+  externalLinksChecked: z.number().int().nonnegative(),
+  localReferencesChecked: z.number().int().nonnegative(),
+  snapshotsCompared: z.number().int().nonnegative(),
+});
+export type AuditEvidence = z.infer<typeof AuditEvidenceSchema>;
+
 export const AuditReportSchema = z.object({
   commandResults: z.array(CommandResultSchema),
   deductionTotal: z.number().int().nonnegative(),
+  evidence: AuditEvidenceSchema,
   findings: z.array(FindingSchema),
   generatedAt: z.string().datetime(),
   grade: z.enum(['A', 'B', 'C', 'D', 'F']),

@@ -1,4 +1,5 @@
 node_modules/
+action-dist/
 coverage/
 dist/
 dist-release/

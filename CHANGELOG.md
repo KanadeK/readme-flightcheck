@@ -15,3 +15,5 @@ All notable changes follow [Keep a Changelog](https://keepachangelog.com/en/1.1.
 - Bounded filesystem snapshots, SSRF-aware HTTP checks, and Playwright screenshot comparison adapters.
 - Shell-free command policy, disposable repository copies, real exit/timeout capture, and sensitive-output redaction.
 - Four MIT-licensed offline fixture repositories with expected scores of 100, 75, 65, and 32.
+- Commander CLI with terminal, JSON, Markdown, responsive HTML, and GitHub annotation reporters.
+- JavaScript GitHub Action with inline annotations, Step Summary, machine-readable outputs, and a bundled ESM runtime.
