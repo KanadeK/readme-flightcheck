@@ -1,0 +1,3 @@
+# Empty Shell
+
+Thin shell.

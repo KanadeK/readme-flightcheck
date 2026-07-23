@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title">
+  <title id="title">Stale command fixture report</title>
+  <rect width="720" height="360" rx="28" fill="#20180b"/>
+  <text x="56" y="96" fill="#d8b36a" font-family="system-ui, sans-serif" font-size="22">INSTALL CLAIM</text>
+  <text x="56" y="190" fill="#fff7e8" font-family="system-ui, sans-serif" font-size="68" font-weight="700">STALE</text>
+  <text x="56" y="250" fill="#e7a744" font-family="system-ui, sans-serif" font-size="24">Real process exit: non-zero</text>
+</svg>

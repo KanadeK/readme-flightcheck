@@ -12,3 +12,6 @@ All notable changes follow [Keep a Changelog](https://keepachangelog.com/en/1.1.
 - Deterministic Markdown parsing for install, run, test, example, heading, link, image, and badge claims.
 - Pure repository-reference checks with root containment, missing/empty file, and target-anchor evidence.
 - Zod-validated findings and audit reports with a published per-finding deduction ledger.
+- Bounded filesystem snapshots, SSRF-aware HTTP checks, and Playwright screenshot comparison adapters.
+- Shell-free command policy, disposable repository copies, real exit/timeout capture, and sensitive-output redaction.
+- Four MIT-licensed offline fixture repositories with expected scores of 100, 75, 65, and 32.

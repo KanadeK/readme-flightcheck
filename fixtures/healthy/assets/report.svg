@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title description">
+  <title id="title">Healthy fixture report</title>
+  <desc id="description">A synthetic report image showing a score of one hundred.</desc>
+  <rect width="720" height="360" rx="28" fill="#0b1220"/>
+  <rect x="32" y="32" width="656" height="296" rx="20" fill="#111d31" stroke="#2d4468"/>
+  <text x="64" y="92" fill="#8ba3c7" font-family="system-ui, sans-serif" font-size="22">README FLIGHTCHECK</text>
+  <text x="64" y="180" fill="#f4f8ff" font-family="system-ui, sans-serif" font-size="74" font-weight="700">100 / A</text>
+  <text x="64" y="238" fill="#61d6a4" font-family="system-ui, sans-serif" font-size="24">All committed claims verified</text>
+  <circle cx="622" cy="178" r="42" fill="#163d32"/>
+  <path d="M600 179l14 14 30-34" fill="none" stroke="#61d6a4" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
