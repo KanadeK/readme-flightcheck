@@ -4,6 +4,8 @@ All notable changes follow [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-07-27
+
 ### Added
 
 - Repository identity, MIT license, contribution policy, security policy, and code of conduct.

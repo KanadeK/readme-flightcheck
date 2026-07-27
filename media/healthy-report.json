@@ -2,7 +2,7 @@
   "commandResults": [
     {
       "command": "node scripts/install-check.mjs",
-      "durationMs": 224,
+      "durationMs": 93,
       "exitCode": 0,
       "line": 14,
       "section": "install",
@@ -12,7 +12,7 @@
     },
     {
       "command": "node app.mjs --name Maintainer",
-      "durationMs": 120,
+      "durationMs": 109,
       "exitCode": 0,
       "line": 20,
       "section": "run",
@@ -22,7 +22,7 @@
     },
     {
       "command": "node test.mjs",
-      "durationMs": 55,
+      "durationMs": 56,
       "exitCode": 0,
       "line": 26,
       "section": "test",
@@ -32,7 +32,7 @@
     },
     {
       "command": "node app.mjs --name Flightcheck",
-      "durationMs": 272,
+      "durationMs": 56,
       "exitCode": 0,
       "line": 32,
       "section": "example",
@@ -50,7 +50,7 @@
     "snapshotsCompared": 0
   },
   "findings": [],
-  "generatedAt": "2026-07-27T09:36:24.597Z",
+  "generatedAt": "2026-07-27T09:39:44.083Z",
   "grade": "A",
   "passed": true,
   "repository": "D:\\我的\\GitHub\\readme-flightcheck\\fixtures\\healthy",

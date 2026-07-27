@@ -65,7 +65,10 @@ const markerSearch = spawnSync(
     '-nE',
     'TODO|FIXME|NotImplemented|placeholder|coming soon|lorem ipsum',
     '--',
+    ':!action-dist/**',
+    ':!.github/ISSUE_TEMPLATE/**',
     ':!docs/ROADMAP.md',
+    ':!scripts/release_check.mjs',
   ],
   { cwd: repositoryRoot, encoding: 'utf8' },
 );
