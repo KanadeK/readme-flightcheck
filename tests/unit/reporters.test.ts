@@ -73,4 +73,76 @@ describe('reporters', () => {
     );
     expect(annotations).toContain('::notice title=README Flightcheck::Score 88/100');
   });
+
+  it('renders successful reports and every annotation severity without color leakage', () => {
+    const successful = createAuditReport({
+      commandResults: [
+        {
+          command: 'node app.mjs',
+          durationMs: 12,
+          exitCode: 0,
+          line: 5,
+          section: 'run',
+          status: 'passed',
+          stderr: '',
+          stdout: 'ok',
+        },
+      ],
+      evidence: {
+        commandsDiscovered: 1,
+        commandsExecuted: 1,
+        externalLinksChecked: 0,
+        localReferencesChecked: 1,
+        snapshotsCompared: 0,
+      },
+      findings: [],
+      generatedAt: new Date('2026-07-27T00:00:00.000Z'),
+      repository: 'fixtures/healthy',
+      source: 'README.md',
+    });
+    const informational = {
+      ...report,
+      findings: [
+        { ...finding, line: undefined, severity: 'warning' as const },
+        { ...finding, code: 'reference.notice', severity: 'notice' as const },
+      ],
+    };
+
+    expect(reportAsTerminal(successful, { color: false })).toContain('No deductions.');
+    expect(reportAsTerminal(successful, { color: false })).toContain('passed    run');
+    expect(reportAsMarkdown(successful)).toContain('No deductions.');
+    expect(reportAsHtml(successful)).toContain('Every checked claim matched its evidence.');
+    expect(reportAsHtml(successful)).toContain('command-passed');
+    expect(reportAsGithubAnnotations(informational)).toContain('::warning ');
+    expect(reportAsGithubAnnotations(informational)).toContain('::notice ');
+  });
+
+  it('keeps Markdown table cells safe when optional command data is absent', () => {
+    const escaped = reportAsMarkdown({
+      ...report,
+      commandResults: [
+        {
+          command: 'node tool.mjs | cat\nsecond line',
+          durationMs: 0,
+          exitCode: null,
+          line: 9,
+          section: 'example',
+          status: 'rejected',
+          stderr: '',
+          stdout: '',
+        },
+      ],
+      findings: [
+        {
+          ...finding,
+          message: 'first | second\nthird',
+          suggestion: 'repair | now',
+        },
+      ],
+    });
+
+    expect(escaped).toContain('first \\| second third');
+    expect(escaped).toContain('repair \\| now');
+    expect(escaped).toContain('| example | 9 | rejected | \u2014 |');
+  });
 });
