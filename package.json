@@ -44,7 +44,9 @@
   "packageManager": "npm@11.16.0",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "benchmark": "npm run build && node scripts/benchmark.mjs",
     "dev": "npm run build && node dist/cli.js",
+    "demo": "npm run build && node scripts/demo.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --max-warnings 0",

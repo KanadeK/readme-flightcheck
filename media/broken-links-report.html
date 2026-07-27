@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>README Flightcheck · 65/D</title>
+    <style>
+      :root {
+        --bg: #07101d;
+        --panel: #0d1a2b;
+        --line: #223855;
+        --text: #edf4ff;
+        --muted: #91a7c3;
+        --cyan: #5bd7d7;
+        --green: #63dfa6;
+        --amber: #ffc766;
+        --red: #ff7f87;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--bg);
+        color: var(--text);
+      }
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: radial-gradient(circle at 85% 0, #143655 0, transparent 32rem), var(--bg);
+      }
+      a {
+        color: var(--cyan);
+      }
+      code {
+        font-family: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+      }
+      .skip {
+        position: absolute;
+        left: -9999px;
+        top: 1rem;
+      }
+      .skip:focus {
+        left: 1rem;
+        background: var(--cyan);
+        color: #00151b;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        z-index: 2;
+      }
+      main {
+        width: min(1180px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 4rem 0 5rem;
+      }
+      .eyebrow {
+        margin: 0 0 1rem;
+        color: var(--cyan);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.7fr);
+        gap: 1.25rem;
+        align-items: stretch;
+      }
+      .hero-copy,
+      .score-card,
+      .panel {
+        background: linear-gradient(145deg, rgba(18, 35, 56, 0.96), rgba(9, 22, 38, 0.96));
+        border: 1px solid var(--line);
+        border-radius: 1.25rem;
+        box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.2);
+      }
+      .hero-copy {
+        padding: clamp(1.5rem, 4vw, 3rem);
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2.5rem, 7vw, 5.5rem);
+        line-height: 0.92;
+        letter-spacing: -0.06em;
+        max-width: 11ch;
+      }
+      .lede {
+        max-width: 62ch;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin: 1.5rem 0 0;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-top: 1.5rem;
+      }
+      .meta span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        padding: 0.45rem 0.7rem;
+        font-size: 0.8rem;
+      }
+      .score-card {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .status {
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        color: var(--red);
+      }
+      .score {
+        font-size: clamp(4rem, 10vw, 7rem);
+        font-weight: 850;
+        letter-spacing: -0.08em;
+        line-height: 1;
+      }
+      .score small {
+        font-size: 0.26em;
+        color: var(--muted);
+        letter-spacing: 0;
+      }
+      .grade {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+      }
+      .grade strong {
+        font-size: 2rem;
+      }
+      .grade span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .evidence {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.8rem;
+        margin: 1.25rem 0;
+      }
+      .metric {
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: rgba(8, 19, 33, 0.7);
+      }
+      .metric strong {
+        display: block;
+        font-size: 1.65rem;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+      .panel {
+        min-width: 0;
+        padding: clamp(1rem, 3vw, 2rem);
+        margin-top: 1.25rem;
+      }
+      .panel-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .panel h2 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+      .panel-head p,
+      .muted {
+        color: var(--muted);
+        margin: 0;
+      }
+      .meta span,
+      footer {
+        overflow-wrap: anywhere;
+      }
+      .table-wrap {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 0.8rem;
+      }
+      table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 100%;
+      }
+      th,
+      td {
+        overflow-wrap: anywhere;
+        text-align: left;
+        padding: 0.9rem;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      tbody tr:last-child td {
+        border-bottom: 0;
+      }
+      .deduction {
+        font-weight: 800;
+        color: var(--red);
+      }
+      .severity {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      .severity-error {
+        color: var(--red);
+        background: #3a1720;
+      }
+      .severity-warning {
+        color: var(--amber);
+        background: #352713;
+      }
+      .severity-notice {
+        color: var(--cyan);
+        background: #123238;
+      }
+      .repair {
+        color: var(--muted);
+        margin-top: 0.5rem;
+      }
+      .repair::before {
+        content: 'Repair · ';
+        color: var(--cyan);
+        font-weight: 700;
+      }
+      .empty {
+        padding: 2rem;
+        border: 1px dashed #2e7b65;
+        border-radius: 0.8rem;
+        color: var(--green);
+      }
+      .command-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+      .command {
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--green);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        background: #081625;
+      }
+      .command-failed,
+      .command-rejected,
+      .command-timed-out {
+        border-left-color: var(--red);
+      }
+      .command div {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+      .command code {
+        display: block;
+        overflow-wrap: anywhere;
+        margin: 0.8rem 0;
+      }
+      .command small {
+        color: var(--muted);
+      }
+      footer {
+        color: var(--muted);
+        font-size: 0.78rem;
+        margin-top: 1.5rem;
+        text-align: center;
+      }
+    </style>
+    <style>
+      @media screen and (max-width: 760px) {
+        main {
+          padding-top: 1.5rem;
+        }
+        .hero,
+        .command-grid {
+          grid-template-columns: 1fr;
+        }
+        .evidence {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .table-wrap {
+          overflow-x: visible;
+        }
+        .table-wrap table,
+        .table-wrap thead,
+        .table-wrap tbody,
+        .table-wrap tr,
+        .table-wrap th,
+        .table-wrap td {
+          display: block !important;
+          width: 100% !important;
+        }
+        .table-wrap thead {
+          display: none !important;
+        }
+        .table-wrap tr {
+          border-bottom: 1px solid var(--line);
+        }
+        .table-wrap td {
+          border: 0;
+          padding: 0.65rem;
+          overflow-wrap: anywhere;
+        }
+        .table-wrap table {
+          font-size: 0.78rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main-content">Skip to audit report</a>
+    <main id="main-content">
+      <section class="hero" aria-labelledby="report-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Preflight evidence · schema 1</p>
+          <h1 id="report-title">README Flightcheck</h1>
+          <p class="lede">
+            A transparent audit of documented commands, repository references, screenshots, and
+            first-screen claims. Every lost point maps to evidence and a repair.
+          </p>
+          <div class="meta">
+            <span>README.md</span><span>2026-07-27T09:18:28.622Z</span><span>v0.1.0</span>
+          </div>
+        </div>
+        <div class="score-card" aria-label="Audit score 65 out of 100, grade D, FAIL">
+          <span class="status">FAIL</span>
+          <div class="score">65<small>/100</small></div>
+          <div class="grade"><span>flight grade</span><strong>D</strong></div>
+        </div>
+      </section>
+      <section class="evidence" aria-label="Evidence counts">
+        <div class="metric"><strong>4/4</strong><span>commands rehearsed</span></div>
+        <div class="metric"><strong>3</strong><span>local references</span></div>
+        <div class="metric"><strong>0</strong><span>external links</span></div>
+        <div class="metric"><strong>0</strong><span>snapshot comparisons</span></div>
+      </section>
+      <section class="panel" aria-labelledby="ledger-title">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Scoring</p>
+            <h2 id="ledger-title">Deduction ledger</h2>
+          </div>
+          <p>-35 points · 3 errors · 0 warnings</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Severity</th>
+                <th>Code</th>
+                <th>Location</th>
+                <th>Points</th>
+                <th>Finding and repair</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="severity severity-error">error</span></td>
+                <td><code>reference.missing</code></td>
+                <td><code>README.md:7</code></td>
+                <td class="deduction">-15</td>
+                <td>
+                  The local image target does not exist: assets/missing-report.svg.
+                  <div class="repair">
+                    Add the target file or correct the relative path and filename casing.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="severity severity-error">error</span></td>
+                <td><code>anchor.missing</code></td>
+                <td><code>README.md:9</code></td>
+                <td class="deduction">-8</td>
+                <td>
+                  The anchor #absent does not exist in docs/guide.md.
+                  <div class="repair">Update the fragment to match the target heading slug.</div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="severity severity-error">error</span></td>
+                <td><code>reference.missing</code></td>
+                <td><code>README.md:9</code></td>
+                <td class="deduction">-12</td>
+                <td>
+                  The local link target does not exist: docs/missing.md.
+                  <div class="repair">
+                    Add the target file or correct the relative path and filename casing.
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="commands-title">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Execution</p>
+            <h2 id="commands-title">Command rehearsal</h2>
+          </div>
+          <p>Shell-free · temporary copy · redacted output</p>
+        </div>
+        <div class="command-grid">
+          <article class="command command-passed">
+            <div><span>install</span><strong>passed</strong></div>
+            <code>node tool.mjs install</code>
+            <small>README line 14 · exit 0</small>
+          </article>
+          <article class="command command-passed">
+            <div><span>run</span><strong>passed</strong></div>
+            <code>node tool.mjs run</code>
+            <small>README line 20 · exit 0</small>
+          </article>
+          <article class="command command-passed">
+            <div><span>test</span><strong>passed</strong></div>
+            <code>node tool.mjs test</code>
+            <small>README line 26 · exit 0</small>
+          </article>
+          <article class="command command-passed">
+            <div><span>example</span><strong>passed</strong></div>
+            <code>node tool.mjs example</code>
+            <small>README line 32 · exit 0</small>
+          </article>
+        </div>
+      </section>
+      <footer>
+        D:\我的\GitHub\readme-flightcheck\fixtures\broken-links · generated locally by README
+        Flightcheck
+      </footer>
+    </main>
+  </body>
+</html>

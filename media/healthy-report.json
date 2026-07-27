@@ -1,0 +1,66 @@
+{
+  "commandResults": [
+    {
+      "command": "node scripts/install-check.mjs",
+      "durationMs": 68,
+      "exitCode": 0,
+      "line": 14,
+      "section": "install",
+      "status": "passed",
+      "stderr": "",
+      "stdout": "install claim verified"
+    },
+    {
+      "command": "node app.mjs --name Maintainer",
+      "durationMs": 199,
+      "exitCode": 0,
+      "line": 20,
+      "section": "run",
+      "status": "passed",
+      "stderr": "",
+      "stdout": "{\"message\":\"README ready, Maintainer.\",\"status\":\"ok\"}"
+    },
+    {
+      "command": "node test.mjs",
+      "durationMs": 83,
+      "exitCode": 0,
+      "line": 26,
+      "section": "test",
+      "status": "passed",
+      "stderr": "",
+      "stdout": "2 fixture assertions passed"
+    },
+    {
+      "command": "node app.mjs --name Flightcheck",
+      "durationMs": 85,
+      "exitCode": 0,
+      "line": 32,
+      "section": "example",
+      "status": "passed",
+      "stderr": "",
+      "stdout": "{\"message\":\"README ready, Flightcheck.\",\"status\":\"ok\"}"
+    }
+  ],
+  "deductionTotal": 0,
+  "evidence": {
+    "commandsDiscovered": 4,
+    "commandsExecuted": 4,
+    "externalLinksChecked": 0,
+    "localReferencesChecked": 2,
+    "snapshotsCompared": 0
+  },
+  "findings": [],
+  "generatedAt": "2026-07-27T09:18:29.595Z",
+  "grade": "A",
+  "passed": true,
+  "repository": "D:\\我的\\GitHub\\readme-flightcheck\\fixtures\\healthy",
+  "schemaVersion": "1",
+  "score": 100,
+  "source": "README.md",
+  "summary": {
+    "errors": 0,
+    "notices": 0,
+    "warnings": 0
+  },
+  "toolVersion": "0.1.0"
+}
