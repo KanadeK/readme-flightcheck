@@ -1,10 +1,11 @@
 import { spawn } from 'node:child_process';
-import { mkdir, rm } from 'node:fs/promises';
+import { copyFile, mkdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const mediaDirectory = path.join(repositoryRoot, 'media');
+const siteDirectory = path.join(repositoryRoot, 'site');
 const cliEntry = path.join(repositoryRoot, 'dist', 'cli.js');
 
 function run(args) {
@@ -27,7 +28,9 @@ function run(args) {
 }
 
 await rm(mediaDirectory, { force: true, recursive: true });
+await rm(siteDirectory, { force: true, recursive: true });
 await mkdir(mediaDirectory, { recursive: true });
+await mkdir(siteDirectory, { recursive: true });
 await run([
   cliEntry,
   'audit',
@@ -55,3 +58,7 @@ await captureSnapshot({
   timeoutMs: 30_000,
   url: pathToFileURL(path.join(mediaDirectory, 'broken-links-report.html')).href,
 });
+await copyFile(
+  path.join(mediaDirectory, 'broken-links-report.html'),
+  path.join(siteDirectory, 'index.html'),
+);

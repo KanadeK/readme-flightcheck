@@ -3,6 +3,8 @@ action-dist/
 coverage/
 dist/
 dist-release/
+media/broken-links-report.html
+site/index.html
 package-lock.json
 playwright-report/
 test-results/

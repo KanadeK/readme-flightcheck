@@ -57,6 +57,9 @@
     "test:integration": "vitest run tests/integration",
     "test:unit": "vitest run tests/unit",
     "prepack": "npm run build",
+    "package": "npm run build && npm run demo && node scripts/package_release.mjs",
+    "release-check": "node scripts/release_check.mjs",
+    "security:scan": "node scripts/security_scan.mjs",
     "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
