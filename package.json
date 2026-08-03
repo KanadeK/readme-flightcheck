@@ -80,17 +80,17 @@
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",
     "@eslint/js": "10.0.1",
-    "@playwright/test": "1.61.1",
+    "@playwright/test": "1.62.1",
     "@types/archiver": "8.0.0",
-    "@types/node": "26.1.1",
+    "@types/node": "26.1.2",
     "@types/pixelmatch": "5.2.6",
     "@types/pngjs": "6.0.5",
     "@vercel/ncc": "0.44.1",
     "@vitest/coverage-v8": "4.1.10",
-    "eslint": "10.7.0",
-    "globals": "17.7.0",
+    "eslint": "10.8.0",
+    "globals": "17.8.0",
     "prettier": "3.9.6",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "typescript-eslint": "8.65.0",
     "vitest": "4.1.10"
   }
